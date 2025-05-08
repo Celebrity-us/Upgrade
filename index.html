@@ -1,6 +1,6 @@
 
 
-
+ 
 
 <!DOCTYPE html>
 <html>
@@ -158,6 +158,56 @@
     margin-top: 7px;
   }
 </style>
+
+
+
+
+
+
+
+
+
+<style>
+.floating-btn {
+  display: none;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: #654321;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+    font-weight: bold;
+  padding: 13px 32px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.12), 0 1.5px 5px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 1000;
+  outline: none;
+  user-select: none;
+  text-align: center;
+}
+.floating-btn:hover, .floating-btn:focus {
+  background: #ffe066;
+}
+@media (max-width: 600px) {
+  .floating-btn {
+    right: 10px;
+    top: 10px;
+    padding: 11px 22px;
+    font-size: 16px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
 
 
 
@@ -406,12 +456,68 @@ class="formbold-form-input" />
   }
 </style>
 <h5 class="text-amakapx">
- 
-
-
 
 
 You are all set. The most important thing you need to do now is to specify your meeting preferences for the <span class="submittedName"></span>  meet and greet, as it offers two options, which are listed below:
+
+
+<span 
+  class="floating-btn" 
+  id="supportBtn" 
+  tabindex="0" 
+  role="button" 
+  aria-label="Support"
+>
+Any questions?<br>Click here  to ask<br>
+	Support Department
+</span>
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const amakaSpan = document.getElementById('amaka-flag');
+  const btn = document.getElementById('supportBtn');
+  if (!amakaSpan || !btn) return;
+  let ticking = false;
+
+  function checkButtonVisibility() {
+    const rect = amakaSpan.getBoundingClientRect();
+    if (rect.top < 0) {
+      btn.style.display = 'block';
+    } else {
+      btn.style.display = 'none';
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(checkButtonVisibility);
+      ticking = true;
+    }
+  });
+
+  checkButtonVisibility();
+
+  btn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btn.click();
+    }
+  });
+
+  btn.addEventListener('click', function() {
+    window.location.href = 'https://1439.3cx.cloud/callus/#coach';
+  });
+});
+</script>
+
+
+
 
 
 <br><br><br>
@@ -422,6 +528,11 @@ You are all set. The most important thing you need to do now is to specify your 
 <br><br><br>
 
 Now, read the text below to understand the difference between the Group and Intimate options so you can make an informed decision.
+
+
+
+
+ 
 
 
 
@@ -453,6 +564,14 @@ The Intimate Meet and Greet is far superior, as it allows you to spend quality t
 
 
 
+
+
+
+<span id="amaka-flag">
+</span>
+
+
+ 
 <br>
 <br><br><br>
 <br>
@@ -463,13 +582,20 @@ The Intimate Meet and Greet is far superior, as it allows you to spend quality t
 
 
 
-Make sure you have read and understood the text above explaining the differences between the Group and Intimate options. Note that this year the prices of both the Group and Intimate options have been reduced courtesy of <span class="submittedName"></span>. This is the last required payment and the most important step, as it determines whether you are placed in the Group meet and greet or if you upgrade to the Intimate.
 
 
 
+Make sure you have read and understood the text above explaining the differences between the Group and Intimate options. You will be pleased to learn that this is  the last payment and the most important step, as it determines whether you are placed in the Group meet and greet or if you upgrade to the Intimate.
 <br><br>
 
-The Group Meet and Greet is priced at just <strong><span class="currency-symbol">$</span>95</strong>, but if you wish to upgrade to the Intimate Meet and Greet, which includes a private dinner with <span class="submittedName"></span>, it is priced at <strong><span class="currency-symbol">$</span>189</strong>. This is the final payment. Choose your preferred option below: Group or Intimate?
+The Group Meet and Greet is priced at just <strong><span class="currency-symbol">$</span>95</strong>, but if you wish to upgrade to the Intimate Meet and Greet, which includes an intimate dinner with <span class="submittedName"></span>, it is priced at <strong><span class="currency-symbol">$</span>189</strong>.
+
+<br><br><br>
+If you have any questions about the Group  or Intimate options, or the price, click on the brown button labeled "Support Department" to contact the Support Department for answers.  If you don't have any questions and understand the difference between the Group and Intimate options, and the price then you can choose your preferred option below: Group or Intimate?
+
+
+
+
 
 
 
@@ -689,3 +815,4 @@ Processing...
 </body>
 </html>
 
+  
